@@ -1,0 +1,15 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+    <record model="ir.ui.view" id="crm_team_image_form">
+      <field name="name">crm_team_image_form</field>
+      <field name="model">crm.team</field>
+      <field name="inherit_id" ref="sales_team.crm_team_view_form"/>
+      <field name="arch" type="xml">
+        <widget name="web_ribbon" position="after">
+          <field name="image_1920" widget="image" class="oe_avatar"/>
+        </widget>
+      </field>
+    </record>
+  </data>
+</odoo>
