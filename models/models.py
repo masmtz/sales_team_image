@@ -5,6 +5,7 @@ from odoo.tools import partition, collections, frozendict, lazy_property
 from odoo.tools import image_process
 
 
+
 class CrmTeam(models.Model):
     _inherit = 'crm.team'
     # _inherit = ['crm.team', 'image.mixin']
