@@ -1,24 +1,59 @@
 <odoo>
     <data>
-<!--
-        <template id="listing">
-          <ul>
-            <li t-foreach="objects" t-as="object">
-              <a t-attf-href="#{ root }/objects/#{ object.id }">
-                <t t-esc="object.display_name"/>
-              </a>
-            </li>
-          </ul>
-        </template>
-        <template id="object">
-          <h1><t t-esc="object.display_name"/></h1>
-          <dl>
-            <t t-foreach="object._fields" t-as="field">
-              <dt><t t-esc="field"/></dt>
-              <dd><t t-esc="object[field]"/></dd>
+        <!-- external layout BACKGROUND -->
+        <template id="external_layout_background_inherited" inherit_id="web.external_layout_background">
+          <xpath expr="//div/div/img" position="replace">
+            <t t-if="o.team_id.image_1920">
+              <img t-if="o.team_id.image_1920" t-att-src="image_data_uri(o.team_id.image_1920)" class="float-left" alt="Logo"/>
             </t>
-          </dl>
+          </xpath>
+          <xpath expr="//div/div/div[2]" position="replace">
+            <div>
+              <strong t-field="o.team_id.name"/>
+            </div>
+          </xpath>
         </template>
--->
+
+        <!-- external layout BOXED -->
+        <template id="external_layout_boxed_inherited" inherit_id="web.external_layout_boxed">
+          <xpath expr="//div/div/div/div/img" position="replace">
+            <t t-if="o.team_id.image_1920">
+              <img t-if="o.team_id.image_1920" t-att-src="image_data_uri(o.team_id.image_1920)" class="float-left" alt="Logo"/>
+            </t>
+          </xpath>
+          <xpath expr="//div/div/div/div[2]" position="replace">
+            <div class="col-6 text-right mb4">
+              <h4 class="mt0" t-field="o.team_id.name"/>
+            </div>
+          </xpath>  
+        </template>
+
+        <!-- external layout CLEAN -->
+        <template id="external_layout_clean_inherited" inherit_id="web.external_layout_clean">
+          <xpath expr="//div/div/div/div/img" position="replace">
+            <t t-if="o.team_id.image_1920">
+              <img t-if="o.team_id.image_1920" t-att-src="image_data_uri(o.team_id.image_1920)" class="float-left" alt="Logo"/>
+            </t>
+          </xpath>
+          <xpath expr="//div/div/div/div[2]" position="replace">
+            <div class="col-5 offset-1" name="company_address">
+                <ul class="list-unstyled">
+                    <strong><li t-if="o.team_id.name"><span t-field="o.team_id.name"/></li></strong>
+                </ul>
+            </div>
+          </xpath>
+        </template>
+
+        <template id="external_layout_standard_inherited" inherit_id="web.external_layout_standard">
+          <xpath expr="//div/div/div/img" position="replace">
+            <t t-if="o.team_id.image_1920">
+              <img t-if="o.team_id.image_1920" t-att-src="image_data_uri(o.team_id.image_1920)" style="max-height: 45px;" alt="Logo"/>
+            </t>
+          </xpath>
+          <xpath expr="//div/div[3]/div/div" position="replace">
+            <div t-field="o.team_id.name" />
+          </xpath>
+        </template>
+
     </data>
 </odoo>

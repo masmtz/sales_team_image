@@ -3,6 +3,7 @@
 from odoo import models, fields, api
 from odoo.tools import partition, collections, frozendict, lazy_property
 from odoo.tools import image_process
+from odoo.modules import get_module_resource
 
 
 
